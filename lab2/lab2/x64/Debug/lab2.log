@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\User\source\repos\PP\lab2\main.cpp(67,43): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\User\source\repos\PP\lab2\main.cpp(67,77): warning C4018: <: несоответствие типов со знаком и без знака
+  lab2.vcxproj -> C:\Users\User\source\repos\PP\lab2\x64\Debug\lab2.exe
