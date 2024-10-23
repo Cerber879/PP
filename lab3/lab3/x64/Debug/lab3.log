@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\User\source\repos\PP\lab3\main.cpp(31,13): warning C4311: <function-style-cast>: усечение указателя из "const LPVOID" в "int"
+C:\Users\User\source\repos\PP\lab3\main.cpp(31,13): warning C4302: <function-style-cast>: усечение из "const LPVOID" к "int"
+C:\Users\User\source\repos\PP\lab3\main.cpp(54,57): warning C4312: приведение типов: преобразование из "int" в "LPVOID" большего размера
+  lab3.vcxproj -> C:\Users\User\source\repos\PP\lab3\x64\Debug\lab3.exe
