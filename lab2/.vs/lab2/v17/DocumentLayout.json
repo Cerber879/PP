@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\PP\\lab2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab2\\output.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}",
       "RelativeMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|solutionrelative:output.bmp||{58961B49-13E0-48C0-9258-13CBC4D40279}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9201484-A2F3-4FC4-A317-19A81B62B2F9}|lab2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab2\\Bitmap.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -24,12 +24,12 @@
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 287,
-          "SelectedChildIndex": 4,
+          "DockedHeight": 426,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,6 +44,14 @@
               "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{68487888-204a-11d3-87eb-00c04f7971a5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "formula.bmp",
@@ -56,31 +64,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab2\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\User\\source\\repos\\PP\\lab2\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGEAAAA7AAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAYwJAAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-15T15:03:43.719Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "output.bmp",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab2\\output.bmp",
               "RelativeDocumentMoniker": "output.bmp",
               "ToolTip": "C:\\Users\\User\\source\\repos\\PP\\lab2\\output.bmp",
               "RelativeToolTip": "output.bmp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-10-17T11:09:26.111Z"
+              "WhenOpened": "2024-10-17T11:09:26.111Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -105,6 +110,16 @@
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-10-16T17:55:19.096Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 96,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

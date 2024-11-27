@@ -45,45 +45,42 @@ std::vector<std::vector<double>> GenerateGaussianKernel(int size, double sigma)
 
 void GaussianBlur(Bitmap* in, uint32_t startWidth, uint32_t endWidth, uint32_t startHeight, uint32_t endHeight, int kernelSize)
 {
-    for (int i = 0; i < 15; i++)
+    double sigma = 1.0;
+    std::vector<std::vector<double>> kernel = GenerateGaussianKernel(kernelSize, sigma);
+
+    for (uint32_t y = startHeight; y < endHeight; ++y)
     {
-        double sigma = 1.0;
-        std::vector<std::vector<double>> kernel = GenerateGaussianKernel(kernelSize, sigma);
-
-        for (uint32_t y = startHeight; y < endHeight; ++y)
+        for (uint32_t x = startWidth; x < endWidth; ++x)
         {
-            for (uint32_t x = startWidth; x < endWidth; ++x)
+            double r = 0, g = 0, b = 0;
+            double weightSum = 0;
+
+            for (int ky = 0; ky < kernelSize; ++ky)
             {
-                double r = 0, g = 0, b = 0;
-                double weightSum = 0;
-
-                for (int ky = 0; ky < kernelSize; ++ky)
+                for (int kx = 0; kx < kernelSize; ++kx)
                 {
-                    for (int kx = 0; kx < kernelSize; ++kx)
-                    {
-                        int px = x + kx - kernelSize / 2;
-                        int py = y + ky - kernelSize / 2;
+                    int px = x + kx - kernelSize / 2;
+                    int py = y + ky - kernelSize / 2;
 
-                        if (px >= 0 && px < in->GetWidth() && py >= 0 && py < in->GetHeight())
-                        {
-                            rgb32* pixel = in->GetPixel(px, py);
-                            double weight = kernel[ky][kx];
-                            r += pixel->r * weight;
-                            g += pixel->g * weight;
-                            b += pixel->b * weight;
-                            weightSum += weight;
-                        }
+                    if (px >= 0 && px < in->GetWidth() && py >= 0 && py < in->GetHeight())
+                    {
+                        rgb32* pixel = in->GetPixel(px, py);
+                        double weight = kernel[ky][kx];
+                        r += pixel->r * weight;
+                        g += pixel->g * weight;
+                        b += pixel->b * weight;
+                        weightSum += weight;
                     }
                 }
-
-                rgb32 newPixel;
-                newPixel.r = static_cast<uint8_t>(r / weightSum);
-                newPixel.g = static_cast<uint8_t>(g / weightSum);
-                newPixel.b = static_cast<uint8_t>(b / weightSum);
-                newPixel.a = 255;
-
-                in->SetPixel(&newPixel, x, y);
             }
+
+            rgb32 newPixel;
+            newPixel.r = static_cast<uint8_t>(r / weightSum);
+            newPixel.g = static_cast<uint8_t>(g / weightSum);
+            newPixel.b = static_cast<uint8_t>(b / weightSum);
+            newPixel.a = 255;
+
+            in->SetPixel(&newPixel, x, y);
         }
     }
 }
@@ -92,6 +89,7 @@ DWORD WINAPI ThreadProc(CONST LPVOID lpParam)
 {
     Squares* squares = (Squares*)lpParam;
     GaussianBlur(squares->in, squares->startWidth, squares->endWidth, squares->startHeight, squares->endHeight, squares->kernelSize);
+    delete squares;
     ExitThread(0);
 }
 
@@ -103,35 +101,30 @@ void StartThreads(Bitmap* in, int numThreads, int numCores)
     int sideWidth = in->GetWidth() / numThreads;
     int remainingWidth = in->GetWidth() % numThreads;
 
-    std::vector<Squares> arrSquares;
+    HANDLE* handles = new HANDLE[numThreads];
     for (int i = 0; i < numThreads; i++)
     {
         for (int j = 0; j < numThreads; j++)
         {
-            Squares square;
-            square.in = in;
-            square.startWidth = sideWidth * j;
-            square.endWidth = sideWidth * (j + 1) + ((j == numThreads - 1) ? remainingWidth : 0);
-            square.startHeight = sideHeight * i;
-            square.endHeight = sideHeight * (i + 1) + ((i == numThreads - 1) ? remainingHeight : 0);
-            square.kernelSize = numThreads;
-            arrSquares.push_back(square);
+            Squares* square = new Squares;
+            square->in = in;
+            square->startWidth = sideWidth * j;
+            square->endWidth = sideWidth * (j + 1) + ((j == numThreads - 1) ? remainingWidth : 0);
+            square->startHeight = sideHeight * i;
+            square->endHeight = sideHeight * (i + 1) + ((i == numThreads - 1) ? remainingHeight : 0);
+            square->kernelSize = numThreads;
+
+            handles[i] = CreateThread(NULL, 0, &ThreadProc, square, CREATE_SUSPENDED, NULL);
+            SetThreadAffinityMask(handles[i], (1 << numCores) - 1);
         }
     }
 
-    HANDLE* handles = new HANDLE[numThreads * numThreads];
-    for (int i = 0; i < numThreads * numThreads; i++)
-    {
-        handles[i] = CreateThread(NULL, 0, &ThreadProc, &arrSquares[i], CREATE_SUSPENDED, NULL);
-        SetThreadAffinityMask(handles[i], (1 << numCores) - 1);
-    }
-
-    for (int i = 0; i < numThreads * numThreads; i++)
+    for (int i = 0; i < numThreads; i++)
     {
         ResumeThread(handles[i]);
     }
 
-    WaitForMultipleObjects(numThreads * numThreads, handles, true, INFINITE);
+    WaitForMultipleObjects(numThreads, handles, true, INFINITE);
 
     delete[] handles;
 }
