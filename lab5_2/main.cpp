@@ -4,26 +4,21 @@
 #include "tchar.h"
 #include <fstream>
 
-CRITICAL_SECTION FileLockingCriticalSection;
-HANDLE depositMutex;
+HANDLE hMutex;
 
 int ReadFromFile() {
-	EnterCriticalSection(&FileLockingCriticalSection);
 	std::fstream myfile("balance.txt", std::ios_base::in);
 	int result;
 	myfile >> result;
 	myfile.close();
-	LeaveCriticalSection(&FileLockingCriticalSection);
 
 	return result;
 }
 
 void WriteToFile(int data) {
-	EnterCriticalSection(&FileLockingCriticalSection);
 	std::fstream myfile("balance.txt", std::ios_base::out);
 	myfile << data << std::endl;
 	myfile.close();
-	LeaveCriticalSection(&FileLockingCriticalSection);
 }
 
 int GetBalance() {
@@ -32,42 +27,28 @@ int GetBalance() {
 }
 
 void Deposit(int money) {
-	if (WaitForSingleObject(depositMutex, INFINITE) == WAIT_OBJECT_0)
-	{
-		int balance = GetBalance();
-		balance += money;
-		WriteToFile(balance);
-		printf("Balance after deposit: %d\n", balance);
-		ReleaseMutex(depositMutex);
-	}
-	else
-	{
-		printf("Mutex acquisition failed\n");
-	}
+	WaitForSingleObject(hMutex, INFINITE);
+	int balance = GetBalance();
+	balance += money;
+	WriteToFile(balance);
+	ReleaseMutex(hMutex);
+	printf("Balance after deposit: %d\n", balance);
 }
 
 void Withdraw(int money) {
-	if (WaitForSingleObject(depositMutex, INFINITE) == WAIT_OBJECT_0)
-	{
-		if (GetBalance() < money)
-		{
-			printf("Cannot withdraw money, balance lower than %d\n", money);
-			ReleaseMutex(depositMutex);
-			return;
-		}
-
-		Sleep(20);
-
-		int balance = GetBalance();
-		balance -= money;
-		WriteToFile(balance);
-		printf("Balance after withdraw: %d\n", balance);
-		ReleaseMutex(depositMutex);
+	WaitForSingleObject(hMutex, INFINITE);
+	int balance = GetBalance();
+	if (balance < money) {
+		printf("Cannot withdraw money, balance lower than %d\n", money);
+		ReleaseMutex(hMutex);
+		return;
 	}
-	else
-	{
-		printf("Mutex acquisition failed\n");
-	}
+
+	Sleep(20);
+	balance -= money;
+	WriteToFile(balance);
+	ReleaseMutex(hMutex);
+	printf("Balance after withdraw: %d\n", balance);
 }
 
 DWORD WINAPI DoDeposit(CONST LPVOID lpParameter)
@@ -86,14 +67,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	HANDLE* handles = new HANDLE[49];
 
-	InitializeCriticalSection(&FileLockingCriticalSection);
-
-	depositMutex = CreateMutex(NULL, FALSE, NULL);
-	if (depositMutex == NULL)
-	{
-		printf("Mutex creation failed\n");
-		exit(1);
-	}
+	hMutex = CreateMutex(NULL, FALSE, LPCWSTR("mutex"));
 
 	WriteToFile(0);
 
@@ -112,8 +86,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	getchar();
 
-	CloseHandle(depositMutex);
-	DeleteCriticalSection(&FileLockingCriticalSection);
+	delete[] handles;
+
+	CloseHandle(hMutex);
 
 	return 0;
 }

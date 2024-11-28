@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab5_2\\sync.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|solutionrelative:sync.bat||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab5_2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab5_2\\sync.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|solutionrelative:sync.bat||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4FA66595-1005-4171-99D9-D8C91E3AA425}|lab5_2.vcxproj|C:\\Users\\User\\source\\repos\\PP\\lab5_2\\balance.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 386,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,20 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "balance.txt",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\balance.txt",
-              "RelativeDocumentMoniker": "balance.txt",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\balance.txt",
-              "RelativeToolTip": "balance.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-11-28T10:06:24.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "sync.bat",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\sync.bat",
               "RelativeDocumentMoniker": "sync.bat",
@@ -72,13 +59,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "balance.txt",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\balance.txt",
+              "RelativeDocumentMoniker": "balance.txt",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\balance.txt",
+              "RelativeToolTip": "balance.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-11-28T10:06:24.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\User\\source\\repos\\PP\\lab5_2\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAEUAAAAAAAAAAADwv1EAAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-28T10:05:14.579Z",
               "EditorCaption": ""

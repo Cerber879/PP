@@ -90,6 +90,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	getchar();
 
+	delete[] handles;
+
 	DeleteCriticalSection(&FileLockingCriticalSection);
 
 	return 0;

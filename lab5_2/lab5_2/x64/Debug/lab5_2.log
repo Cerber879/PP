@@ -3,4 +3,5 @@ C:\Users\User\source\repos\PP\lab5_2\main.cpp(75,10): warning C4311: приве�
 C:\Users\User\source\repos\PP\lab5_2\main.cpp(75,10): warning C4302: приведение типов: усечение из "const LPVOID" к "int"
 C:\Users\User\source\repos\PP\lab5_2\main.cpp(81,11): warning C4311: приведение типов: усечение указателя из "const LPVOID" в "int"
 C:\Users\User\source\repos\PP\lab5_2\main.cpp(81,11): warning C4302: приведение типов: усечение из "const LPVOID" к "int"
+  LINK : не найден или не выполнена сборка C:\Users\User\source\repos\PP\lab5_2\x64\Debug\lab5_2.exe при последней инкрементной компоновке; выполняется полная компоновка
   lab5_2.vcxproj -> C:\Users\User\source\repos\PP\lab5_2\x64\Debug\lab5_2.exe
